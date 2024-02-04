@@ -3,11 +3,14 @@ import { PixORM, Table, Column } from './pixorm/index';
 
 @Table('users')
 class User {
-  @Column()
-  username!: string;
+  @Column({ fieldName: 'user_id' })
+  userId: number;
 
-  @Column()
-  email!: string;
+  @Column({ type: 'TEXT' })
+  username: string;
+
+  @Column({ type: 'VARCHAR(100)', fieldName: 'user_email' })
+  userEmail: string;
 }
 
 const userSchema = PixORM.generateSchema(User);
