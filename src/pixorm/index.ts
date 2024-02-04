@@ -11,17 +11,17 @@ export class PixORM {
     }
 
     const columnDefinitions = columns.map((column: string | symbol) => {
-      return `${column.toString()} VARCHAR(255)`; // For simplicity, consider all columns as VARCHAR(255)
+      return `${column.toString()} VARCHAR(255)`; // For simplicity, we assume all columns as VARCHAR(255)
     });
 
     const schema = `
-      -- Auto-generated schema from PixORM
-      -- Model: ${target.name}
-      -- Generated at: ${new Date().toISOString()}
+-- Auto-generated schema from PixORM
+-- Model: ${target.name}
+-- Generated at: ${new Date().toISOString()}
       
-      CREATE TABLE ${tableName} (
-        ${columnDefinitions.join(', ')}
-      );
+CREATE TABLE ${tableName} (
+  ${columnDefinitions.join(', ')}
+);
     `;
 
     return schema;
